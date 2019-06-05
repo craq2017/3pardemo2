@@ -1,7 +1,9 @@
 ---
 - name: Create 3PAR Domain & Users
   hosts: localhost
-  become_user: root 
+  become: yes
+  become_user: root
+  become_method: su
   vars:
     user: bob
 
