@@ -11,7 +11,7 @@
     vol_size_unit: 'GiB'
     autolun: False
     lunid: 110
-    volumeset_name: "bob_volumeset"
+    volume_set_name: "bob_volumeset"
     add_vol_setmembers: ['volume_bob_1', 'volume_bob_2', 'volume_bob_3']
 
   tasks:
