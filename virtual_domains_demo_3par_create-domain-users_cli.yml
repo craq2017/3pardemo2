@@ -1,7 +1,6 @@
 ---
 - name: Create 3PAR Domain & Users
   hosts: localhost
-  gather_facts: no
   become: yes
   vars:
     user: bob
