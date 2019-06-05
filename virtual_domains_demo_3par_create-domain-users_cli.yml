@@ -1,6 +1,10 @@
 ---
 - name: Create 3PAR Domain & Users
   hosts: localhost
+  vars:
+    user: bob
+
+    
   tasks:
     - name: install sshpass
       package:
@@ -9,7 +13,7 @@
       become: yes
 
     - name: Create Domain
-      shell: /usr/bin/sshpass -p PTzk5fVt ssh -oStrictHostKeyChecking=no 3paradm@172.16.90.167 "createdomain bob_domain"
+      shell: /usr/bin/sshpass -p PTzk5fVt ssh -oStrictHostKeyChecking=no 3paradm@172.16.90.167 "createdomain {{ user }}_domain"
       register: domain
 
     - name: print domain
@@ -17,7 +21,7 @@
         msg: "{{ domain }}"
 
     - name: Create Users
-      shell: /usr/bin/sshpass -p PTzk5fVt ssh -oStrictHostKeyChecking=no 3paradm@172.16.90.167 "createuser -c Password1 bob_user bob_domain edit"
+      shell: /usr/bin/sshpass -p PTzk5fVt ssh -oStrictHostKeyChecking=no 3paradm@172.16.90.167 "createuser -c Password1 {{ user }}_user bob_domain edit"
       register: users
 
     - name: print users
