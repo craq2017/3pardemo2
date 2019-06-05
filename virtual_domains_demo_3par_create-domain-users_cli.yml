@@ -13,10 +13,14 @@
         name: sshpass
         state: present
       become: yes
+      become_user: root
+
 
     - name: Create Domain
       shell: /usr/bin/sshpass -p PTzk5fVt ssh -oStrictHostKeyChecking=no 3paradm@172.16.90.167 "createdomain {{ user }}_domain"
       register: domain
+      become: yes
+      become_user: root
 
     - name: print domain
       debug:
@@ -25,6 +29,8 @@
     - name: Create Users
       shell: /usr/bin/sshpass -p PTzk5fVt ssh -oStrictHostKeyChecking=no 3paradm@172.16.90.167 "createuser -c Password1 {{ user }}_user {{ user }}_domain edit"
       register: users
+      become: yes
+      become_user: root
 
     - name: print users
       debug:
