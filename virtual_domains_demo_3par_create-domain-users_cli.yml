@@ -3,7 +3,6 @@
   hosts: localhost
   become: yes
   become_user: root
-  become_method: su
   vars:
     user: bob
 
