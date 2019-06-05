@@ -22,7 +22,7 @@
         msg: "{{ domain }}"
 
     - name: Create Users
-      shell: /usr/bin/sshpass -p PTzk5fVt ssh -oStrictHostKeyChecking=no 3paradm@172.16.90.167 "createuser -c Password1 {{ user }}_user bob_domain edit"
+      shell: /usr/bin/sshpass -p PTzk5fVt ssh -oStrictHostKeyChecking=no 3paradm@172.16.90.167 "createuser -c Password1 {{ user }}_user {{ user }}_domain edit"
       register: users
 
     - name: print users
